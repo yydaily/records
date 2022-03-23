@@ -111,6 +111,91 @@
     
     
     <article
+  id="post-algorithm/dfs"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/10/22/algorithm/dfs/"
+    >深度优先遍历</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/10/22/algorithm/dfs/" class="article-date">
+  <time datetime="2021-10-21T16:00:00.000Z" itemprop="datePublished">2021-10-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>此篇文章收录于<a target="_blank" rel="noopener" href="https://yydaily.github.io/img/main.pdf">算法笔记</a>中，建议提前阅读前缀知识。</p>
+<h2 id="定义">定义</h2>
+<p>按照惯例，参考wiki：</p>
+<blockquote>
+<p><strong>Depth-first search</strong> (<strong>DFS</strong>) is an algorithm for traversing or searching tree or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.</p>
+</blockquote>
+<p>翻译过来就是：</p>
+<blockquote>
+<p><strong>DFS</strong> 是一种在图/树上遍历或搜索的算法。这个算法从一个根（在图中可以选择一个点作为根）出发，尽可能搜索到最远处，然后退回，继续下一个分支。</p>
+</blockquote>
+<p>简单点说，就是解集的空间是有限的，我们按照一个方向不断的枚举每一个可能的解，直到找到一个可行解为止。比如，小时候我们玩的迷宫，只要迷宫不变化，我们走遍每一条路，总是能找到出口的，深度优先搜索就是按照一个方向一直莽，如果错了就回头，直到莽出一条路来。</p>
+<h2 id="算法过程">算法过程</h2>
+<h3 id="算法描述">算法描述</h3>
+<ul>
+<li>根节点入栈</li>
+<li>从栈中取出第一个节点，标记为visit，并检验它是否是目标
+<ul>
+<li>如果找到目标，则搜索结束，并回传结果</li>
+<li>枚举每个没有visit的子节点，将他们入队，重复步骤2</li>
+</ul>
+</li>
+<li>重复步骤 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span></li>
+</ul>
+<h3 id="伪代码">伪代码</h3>
+<p><img src="https://yydaily.github.io/img/algorithm/image-20211021163116506.png" alt="image-20211021163116506"></p>
+<h3 id="例子">例子</h3>
+<p><img src="https://yydaily.github.io/img/algorithm/gif-20211022182450345.gif" alt="gif-20211022182450345"></p>
+<h2 id="例题">例题</h2>
+<p>以 <a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/1598/A">CF1598A</a> 为例。</p>
+<p>题意是：</p>
+<ol>
+<li>多组样例</li>
+<li>每次给你一个大小为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>∗</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">2*n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>01</mn></mrow><annotation encoding="application/x-tex">01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">1</span></span></span></span> 矩阵，问你能不能找到一条从 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>1</mn><mo separator="true">,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(1,1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>2</mn><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(2,n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">2</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 路径。</li>
+</ol>
+<p>虽然原题可以通过扫描的方式得到答案，但是不失为一个练手dfs的题目。</p>
+<p>给出AC代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">char</span> a[<span class="number">2</span>][<span class="number">1000</span>];</span><br><span class="line"><span class="keyword">bool</span> vis[<span class="number">2</span>][<span class="number">1000</span>];</span><br><span class="line"><span class="built_in">stack</span>&lt;<span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;&gt; s;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">memset</span>(vis, <span class="literal">false</span>, <span class="keyword">sizeof</span>(vis));</span><br><span class="line">	<span class="keyword">while</span>(s.size()) s.pop();</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;a[<span class="number">0</span>]&gt;&gt;a[<span class="number">1</span>];</span><br><span class="line">	s.push(<span class="built_in">make_pair</span>(<span class="number">0</span>,<span class="number">0</span>));<span class="comment">//起点入栈</span></span><br><span class="line">	vis[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;<span class="comment">//标记为访问过</span></span><br><span class="line">	<span class="keyword">while</span>(!s.empty()) &#123;</span><br><span class="line">		<span class="keyword">auto</span> i = s.top();<span class="comment">// 每次拿到top节点</span></span><br><span class="line">		<span class="keyword">if</span>(i.first==<span class="number">1</span>&amp;&amp;i.second==n<span class="number">-1</span>) &#123; <span class="comment">// 如果当前节点是答案，直接返回</span></span><br><span class="line">			<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;YES&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">			<span class="keyword">return</span> ;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">bool</span> need_pop = <span class="literal">true</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>;j&lt;<span class="number">9</span>;j++) &#123;</span><br><span class="line">			<span class="keyword">auto</span> newX = i.first - <span class="number">1</span> + j/<span class="number">3</span>;</span><br><span class="line">			<span class="keyword">auto</span> newY = i.second <span class="number">-1</span> + j%<span class="number">3</span>;</span><br><span class="line">			<span class="keyword">if</span>(<span class="number">0</span>&lt;=newX &amp;&amp; newX&lt;=<span class="number">1</span> &amp;&amp; <span class="number">0</span>&lt;=newY &amp;&amp; newY&lt;n &amp;&amp; !vis[newX][newY] &amp;&amp; a[newX][newY]==<span class="string">&#x27;0&#x27;</span>) &#123; <span class="comment">// 枚举找到一个没有访问过的子节点</span></span><br><span class="line">				vis[newX][newY] = <span class="literal">true</span>; <span class="comment">// 标记为访问过</span></span><br><span class="line">				s.push(<span class="built_in">make_pair</span>(newX,newY)); <span class="comment">// 入栈</span></span><br><span class="line">				need_pop = <span class="literal">false</span>;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(need_pop) &#123;</span><br><span class="line">			s.pop();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;NO&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> t;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;t;</span><br><span class="line">	<span class="keyword">while</span>(t--) solve();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-yy_daily/2021/10/doraemon"
   class="article article-type-post"
   itemscope
@@ -655,66 +740,13 @@ v_1\\v_2\\\vdots\\ v_n
 </article>
 
     
-    <article
-  id="post-algorithm/linear_algebra"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/10/18/algorithm/linear_algebra/"
-    >线性代数</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/10/18/algorithm/linear_algebra/" class="article-date">
-  <time datetime="2021-10-17T16:00:00.000Z" itemprop="datePublished">2021-10-18</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>此篇文章收录于<a target="_blank" rel="noopener" href="https://yydaily.github.io/img/main.pdf">算法笔记</a>中，建议提前阅读前缀知识。</p>
-<h2 id="几句废话">几句废话</h2>
-<p>在长达四年的大学生活中，我始终没有学好这门课，这件事成了我心里的一个梗，从小到大，我的数学一直很好，是因为我始终觉得，数学提供了一种非常优雅的方式让我们去描述这个世界。</p>
-<p>直到线性代数的出现，让我觉得数学也有 ugly 的一面，各种没有说明的定义，让我觉得异常不爽，甚至一度怀疑自己的能力/智商。很多时候，我不知道为什么是这样，老师也不讲，各种背公式，让我觉得这个东西就像人为规定的毫无意义的东西。直到我看到了<a target="_blank" rel="noopener" href="https://blog.csdn.net/myan/article/details/647511">这篇文章</a>，突然有了豁然开朗的感觉。虽然看懂的东西很少，却让我有一种舒了一口气的感觉。</p>
-<p>遂决定，自己开坑，将一些概念，用自己的话讲出来，从一个学生的视角，不计较学习时间的角度来写，没有课时的限制，没有考试的限制，写出来自己看也好。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
   
 </section>

@@ -111,6 +111,56 @@
     
     
     <article
+  id="post-yy_daily/2021/07/20210722"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/07/22/yy_daily/2021/07/20210722/"
+    >20210722</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/07/22/yy_daily/2021/07/20210722/" class="article-date">
+  <time datetime="2021-07-21T16:00:00.000Z" itemprop="datePublished">2021-07-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="聊天记录生成器">聊天记录生成器</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;<span class="comment">/*&#123;&#123;&#123;*/</span></span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\documentclass[tikz,border=2pt]&#123;standalone&#125; &quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage&#123;xeCJK&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage&#123;fontspec,xunicode,xltxtra&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage&#123;titlesec&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage[top=1in,bottom=1in,left=1in,right=1in]&#123;geometry&#125; &quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage&#123;indentfirst&#125;             % 段首缩进&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage&#123;xcolor&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage&#123;tikz&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usepackage&#123;wasysym&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usetikzlibrary&#123;fpu&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usetikzlibrary&#123;math&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\usetikzlibrary&#123;arrows,shapes,chains&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\definecolor&#123;background&#125;&#123;RGB&#125;&#123;243,243,243&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\definecolor&#123;myColor&#125;&#123;RGB&#125;&#123;149,236,105&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\XeTeXlinebreaklocale \&quot;zh\&quot;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\pagecolor&#123;background&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;<span class="comment">/*&#125;&#125;&#125;*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">begin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\begin&#123;document&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\begin&#123;tikzpicture&#125;[&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;her/.style=&#123;rounded corners, draw=white, fill=white, align=left, inner sep=8pt&#125;,&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;my/.style=&#123;rounded corners, draw=myColor, fill=myColor, align=left, inner sep=8pt,text width=7cm&#125;,&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;time/.style=&#123;color=gray, align=center&#125;]&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">end</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\end&#123;tikzpicture&#125; &quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\end&#123;document&#125;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>, b = <span class="number">0</span>, c = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">string</span> llast = <span class="string">&quot;start&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">handler</span><span class="params">(<span class="built_in">string</span> input_line)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(input_line.length()&lt;=<span class="number">0</span>) <span class="keyword">return</span> ;</span><br><span class="line">	<span class="keyword">if</span>(input_line.substr(<span class="number">1</span>, <span class="number">4</span>)==<span class="string">&quot;time&quot;</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\node[time, below=of &quot;</span>&lt;&lt;llast&lt;&lt;<span class="string">&quot;] (time&quot;</span>&lt;&lt;a&lt;&lt;<span class="string">&quot;) &#123;&quot;</span>&lt;&lt;input_line.substr(<span class="number">7</span>)&lt;&lt;<span class="string">&quot;&#125;;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		llast = <span class="string">&quot;time&quot;</span> + to_string(a++);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(input_line.substr(<span class="number">1</span>, <span class="number">3</span>)==<span class="string">&quot;get&quot;</span>) &#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\node[her, below=of &quot;</span>&lt;&lt;llast&lt;&lt;<span class="string">&quot;] (her&quot;</span>&lt;&lt;b&lt;&lt;<span class="string">&quot;) &#123;&quot;</span>&lt;&lt;input_line.substr(<span class="number">6</span>)&lt;&lt;<span class="string">&quot;&#125;;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		llast = <span class="string">&quot;her&quot;</span> + to_string(b++);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(input_line.substr(<span class="number">1</span>, <span class="number">2</span>)==<span class="string">&quot;to&quot;</span>)&#123;</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\node[my, below=of &quot;</span>&lt;&lt;llast&lt;&lt;<span class="string">&quot;] (my&quot;</span>&lt;&lt;c&lt;&lt;<span class="string">&quot;) &#123;&quot;</span>&lt;&lt;input_line.substr(<span class="number">5</span>)&lt;&lt;<span class="string">&quot;&#125;;&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">		llast = <span class="string">&quot;my&quot;</span> + to_string(c++);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">output</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">//\node[time] (time0) &#123;08:23&#125;;</span></span><br><span class="line">	<span class="comment">//\node[my,below=of time0] (my0) &#123;hello&#125;;</span></span><br><span class="line">	<span class="comment">//\node[her,below=of my0] (her0) &#123;hi&#125;;</span></span><br><span class="line">	freopen(<span class="string">&quot;./origin.text&quot;</span>, <span class="string">&quot;r&quot;</span>, <span class="built_in">stdin</span>);</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;<span class="string">&quot;\\node (start);&quot;</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="built_in">string</span> input_line;</span><br><span class="line">	<span class="keyword">while</span>(<span class="built_in">cin</span>) &#123;</span><br><span class="line">		getline(<span class="built_in">cin</span>, input_line);</span><br><span class="line">		handler(input_line);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	init();</span><br><span class="line">	begin();</span><br><span class="line">	output();</span><br><span class="line">	end();</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yydaily/" rel="tag">yydaily</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-yy_daily/2021/07/20210714"
   class="article article-type-post"
   itemscope
@@ -404,63 +454,13 @@ And, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.o
 </article>
 
     
-    <article
-  id="post-yy_daily/2021/07/20210702"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/07/02/yy_daily/2021/07/20210702/"
-    >20210702</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/07/02/yy_daily/2021/07/20210702/" class="article-date">
-  <time datetime="2021-07-01T16:00:00.000Z" itemprop="datePublished">2021-07-02</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>今天又搞了一个线上问题，老大提到了一个点，问我是不是过于自信了，我觉得他说的没问题，很多时候我都基于过于自信和不敬畏线上了。</p>
-<p>感觉我已经养成了非常多的坏习惯了，这两天感觉也有点上火，状态简直糟糕透了。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yydaily/" rel="tag">yydaily</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/12/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/14/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/12/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/14/">下一页</a>
   </nav>
   
 </section>
