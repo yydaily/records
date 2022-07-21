@@ -111,6 +111,67 @@
     
     
     <article
+  id="post-pe/493/solution"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/04/14/pe/493/solution/"
+    >project euler 493</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/04/14/pe/493/solution/" class="article-date">
+  <time datetime="2021-04-13T16:00:00.000Z" itemprop="datePublished">2021-04-14</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="problems">problems</h2>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>70</mn></mrow><annotation encoding="application/x-tex">70</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span><span class="mord">0</span></span></span></span> coloured balls are placed in an urn, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span> for each of the seven rainbow colours.</p>
+<p>What is the expected number of distinct colours in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn></mrow><annotation encoding="application/x-tex">20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span></span></span></span> randomly picked balls?</p>
+<p>Give your answer with nine digits after the decimal point (a.bcdefghij).</p>
+<h2 id="translation">translation</h2>
+<p>在容器中装有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>70</mn></mrow><annotation encoding="application/x-tex">70</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span><span class="mord">0</span></span></span></span> 个球，分别染上彩虹的七种颜色，每种颜色各有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span> 个。</p>
+<p>从容器中随机取出 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn></mrow><annotation encoding="application/x-tex">20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span></span></span></span> 个球，这些球中不同颜色的数量的期望值是多少？</p>
+<p>你的答案应当保留到小数点后 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn></mrow><annotation encoding="application/x-tex">9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span></span></span></span> 位小数（a.bcdefghij）。</p>
+<h2 id="solution-cpp">solution.cpp</h2>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">fac</span><span class="params">(<span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(a &lt;= <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> a * fac(a<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> fac(a) / fac(b) / fac(a-b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">get_cnt</span><span class="params">(<span class="keyword">int</span> a[<span class="number">10</span>])</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> ret = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">7</span>;i++) ret *= C(<span class="number">10</span>, a[i]);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">long</span> color = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> num[<span class="number">10</span>];</span><br><span class="line">	<span class="keyword">int</span> upper = <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i&lt;upper;i++) &#123;</span><br><span class="line">		<span class="keyword">auto</span> buf = i;</span><br><span class="line">		<span class="keyword">auto</span> total = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> c = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i&lt;<span class="number">7</span>;i++) &#123;</span><br><span class="line">			num[i] = buf%<span class="number">11</span>;</span><br><span class="line">			buf/=<span class="number">11</span>;</span><br><span class="line">			c+=num[i]!=<span class="number">0</span>;</span><br><span class="line">			total += num[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(total == <span class="number">20</span>) &#123;</span><br><span class="line">			<span class="keyword">long</span> <span class="keyword">long</span> cnt = get_cnt(num);</span><br><span class="line">			color += c * cnt;</span><br><span class="line">			sum += cnt;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;color&lt;&lt;<span class="string">&#x27; &#x27;</span>&lt;&lt;sum&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="solution-go">solution.go</h2>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fac</span><span class="params">(a <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(a&lt;=<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> a * fac(a<span class="number">-1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">C</span><span class="params">(a <span class="keyword">int</span>, b <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> fac(a) / fac(b) / fac(a-b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">get_cnt</span><span class="params">(a []<span class="keyword">int</span>)</span> <span class="title">int64</span></span> &#123;</span><br><span class="line">	ret := <span class="keyword">int64</span>(<span class="number">1</span>)</span><br><span class="line">	<span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;<span class="number">7</span>;i++ &#123;</span><br><span class="line">		ret *= <span class="keyword">int64</span>(C(<span class="number">10</span>, a[i]))</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	sum := <span class="keyword">int64</span>(<span class="number">0</span>)</span><br><span class="line">	color := <span class="keyword">int64</span>(<span class="number">0</span>)</span><br><span class="line">	num := <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">10</span>)</span><br><span class="line">	upper := <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span> * <span class="number">11</span>;</span><br><span class="line">	<span class="keyword">for</span> i:=<span class="number">1</span>;i&lt;upper;i++ &#123;</span><br><span class="line">		buf := i</span><br><span class="line">		total := <span class="number">0</span></span><br><span class="line">		c := <span class="keyword">int64</span>(<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">for</span> j:=<span class="number">0</span>;j&lt;<span class="number">7</span>;j++ &#123;</span><br><span class="line">			num[j] = buf % <span class="number">11</span></span><br><span class="line">			buf /= <span class="number">11</span></span><br><span class="line">			<span class="keyword">if</span> num[j] != <span class="number">0</span>&#123;</span><br><span class="line">				c++</span><br><span class="line">			&#125;</span><br><span class="line">			total += num[j]</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> total == <span class="number">20</span> &#123;</span><br><span class="line">			cnt := get_cnt(num)</span><br><span class="line">			color += c * cnt</span><br><span class="line">			sum+=cnt</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%d %d\n&quot;</span>, color, sum)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="solution-py"><a target="_blank" rel="noopener" href="http://solution.py">solution.py</a></h2>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fac</span>(<span class="params">a</span>):</span></span><br><span class="line">	<span class="keyword">if</span> a&lt;=<span class="number">1</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> a * fac(a<span class="number">-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">C</span>(<span class="params">a, b</span>):</span></span><br><span class="line">	<span class="keyword">return</span> fac(a) / fac(b) / fac(a-b)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cnt</span>(<span class="params">a</span>):</span></span><br><span class="line">	ret = <span class="number">1</span></span><br><span class="line">	<span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">		ret *= C(<span class="number">10</span>, a[i])</span><br><span class="line">	<span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">cases = <span class="number">0</span></span><br><span class="line">color = <span class="number">0</span></span><br><span class="line">num = [<span class="number">0</span>]*<span class="number">10</span></span><br><span class="line">upper = <span class="number">11</span> ** <span class="number">7</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, upper):</span><br><span class="line">	buf = i</span><br><span class="line">	total = <span class="number">0</span></span><br><span class="line">	c = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">7</span>):</span><br><span class="line">		num[j] = buf%<span class="number">11</span></span><br><span class="line">		buf/=<span class="number">11</span></span><br><span class="line">		<span class="keyword">if</span> num[j] != <span class="number">0</span>:</span><br><span class="line">			c+=<span class="number">1</span></span><br><span class="line">		total += num[j]</span><br><span class="line">	<span class="keyword">if</span> total == <span class="number">20</span>:</span><br><span class="line">		cnt = get_cnt(num)</span><br><span class="line">		color += c * cnt</span><br><span class="line">		cases += cnt</span><br><span class="line">print(color, cases)</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/project-euler/" rel="tag">project euler</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-pe/5/solution"
   class="article article-type-post"
   itemscope
@@ -335,58 +396,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yydaily/" rel="tag">yydaily</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-    
-</article>
-
-    
-    <article
-  id="post-for_love/2021/03/20210323"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2021/03/23/for_love/2021/03/20210323/"
-    >20210323</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2021/03/23/for_love/2021/03/20210323/" class="article-date">
-  <time datetime="2021-03-22T16:00:00.000Z" itemprop="datePublished">2021-03-23</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  你看，考验我俩默契的时候到了，所以密码是多少呢？ 
-      <a class="article-more-link" href="/2021/03/23/for_love/2021/03/20210323/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%83%B3%E5%A5%B9%E7%9A%84%E6%AF%8F%E4%B8%80%E5%A4%A9/" rel="tag">想她的每一天</a></li></ul>
 
     </footer>
   </div>

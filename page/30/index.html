@@ -111,6 +111,64 @@
     
     
     <article
+  id="post-algorithm/prime"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2017/04/18/algorithm/prime/"
+    >基础筛法</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2017/04/18/algorithm/prime/" class="article-date">
+  <time datetime="2017-04-17T16:00:00.000Z" itemprop="datePublished">2017-04-18</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>素数是常用的一种神奇的数字，记得我读初中的时候就手动计算过一百到两百的素数，计算量还是不小的，现在想想还是蛮有趣的。今天就来讲一下怎么快速的计算素数。</p>
+<p>以一百万为例。</p>
+<p>最原始的方法就是逐个判断。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#define Max 1000000</span><br><span class="line">bool prime[Max]&#x3D;&#123;false&#125;;</span><br><span class="line">int main () &#123;</span><br><span class="line">	for(int i&#x3D;1;i&lt;Max;i++) &#123;</span><br><span class="line">		bool flag&#x3D;true;</span><br><span class="line">		for(int j&#x3D;1;j&lt;i;j++)</span><br><span class="line">			if(i%j&#x3D;&#x3D;0)</span><br><span class="line">				flag&#x3D;false;</span><br><span class="line">		if(flag)</span><br><span class="line">			prime[i]&#x3D;true;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上是最好写但是效率最低的一种写法。对时间稍微要求高一点就出问题了。下面来介绍一种比较快的计算方法，筛法。</p>
+<p>我们都知道任何一个正整数都可以唯一质因数分解，假设一个合数分解成了很多个因子，那么显然他是最小因子的整数倍，根据这个原理我们可以将所有的合数被最小的因子分解掉，也就是这里所说的“筛掉”，这就是筛法的主要思想。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#define Max 1000000</span><br><span class="line">bool prime[Max];&#x2F;&#x2F;用来筛掉合数</span><br><span class="line">int num[Max];&#x2F;&#x2F;用来存储素数</span><br><span class="line">int main() &#123;</span><br><span class="line">	memset(prime,false,sizeof(prime));&#x2F;&#x2F;false意味着是素数</span><br><span class="line">	int count&#x3D;0;&#x2F;&#x2F;统计素数个数，并存储素数</span><br><span class="line">	for(int i&#x3D;2;i&lt;Max;i++)</span><br><span class="line">		if(!prime[i]) &#123;</span><br><span class="line">			num[flag++]&#x3D;i;&#x2F;&#x2F;将素数存起来</span><br><span class="line">			for(int j&#x3D;i*i;j&lt;Max;j+&#x3D;i)</span><br><span class="line">				prime[j]&#x3D;true;&#x2F;&#x2F;将有因子为i的合数筛掉</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但是上面的写法并不是最快的，最快的应该是欧拉线性筛，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const int maxm &#x3D; 1e7+10;</span><br><span class="line">bool p[maxm];</span><br><span class="line">int pri[maxm];</span><br><span class="line">int init(int n) &#123;</span><br><span class="line">    for(int i &#x3D; 2; i&lt;&#x3D;n; i++) &#123;</span><br><span class="line">        if(!p[i])</span><br><span class="line">            pri[++pri[0]] &#x3D; i;</span><br><span class="line">        for(int j &#x3D; 1; j&lt;&#x3D;pri[0]&amp;&amp;i*pri[j]&lt;&#x3D;n; j++) &#123;</span><br><span class="line">            p[i*pri[j]] &#x3D; true;</span><br><span class="line">            if(i%pri[j]&#x3D;&#x3D;0)</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return pri[0];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>仅为一个蒟蒻的个人之见，有任何问题欢迎交流，望大神勿喷。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/" rel="tag">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+    
+</article>
+
+    
+    <article
   id="post-algorithm/qpow"
   class="article article-type-post"
   itemscope
